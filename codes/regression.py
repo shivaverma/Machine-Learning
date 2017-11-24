@@ -1,12 +1,12 @@
 import numpy as np
 
 
-def predict(feature_data, feature_test):
+def predict(feature_data, feature_test, points):
 
     from sklearn.linear_model import LinearRegression
     c = LinearRegression()
     c.fit(feature_data, feature_test)
-    return c.coef_
+    return c.predict(points)
 
 
 def accuracy(out, inp):
@@ -17,8 +17,9 @@ def accuracy(out, inp):
 
 if __name__ == '__main__':
 
-    x = np.array([[12], [12], [54], [3], [41]])
-    y = np.array([[1], [3], [12], [3], [1]])
-    pred = predict(x, y)
+    x = np.array([[2], [4], [24], [6], [10]])
+    y = np.array([[1], [2], [12], [3], [5]])
+    z = np.array([[2], [3]])
+    pred = predict(x, y, z)
     print pred
 
