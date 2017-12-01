@@ -7,6 +7,7 @@ import pickle
 import numpy
 import matplotlib.pyplot as plt
 import sys
+from sklearn.preprocessing import minmax_scale
 from sklearn.cluster import KMeans
 sys.path.append("../tools/")
 from feature_format import featureFormat, targetFeatureSplit
@@ -19,7 +20,7 @@ def Draw(pred, features, poi, mark_poi=False, name="image.png", f1_name="feature
     # drawing more than five clusters
     colors = ["b", "c", "k", "m", "g"]
     for ii, pp in enumerate(pred):
-        plt.scatter(features[ii][0], features[ii][1], color = colors[pred[ii]])
+        plt.scatter(features[ii][0], features[ii][1], color=colors[pred[ii]])
 
     # if you like, place red stars over points that are POIs (just for funnies)
     if mark_poi:
@@ -48,18 +49,16 @@ features_list = [poi, feature_1, feature_2]
 data = featureFormat(data_dict, features_list)
 poi, finance_features = targetFeatureSplit(data)
 
+finance_features.append([200000, 1000000])
 
 Max = 0
 Min = 1000000
 
-for i in data_dict:
-    if data_dict[i]['salary'] != 'NaN':
-        Max = max(data_dict[i]['salary'], Max)
-    if data_dict[i]['salary'] != 'NaN':
-        Min = min(data_dict[i]['salary'], Min)
+x = minmax_scale(finance_features)
 
-print Max
-print Min
+n = len(finance_features)
+
+print x[n-1]
 
 # in the "clustering with 3 features" part of the mini-project,
 # you'll want to change this line to
