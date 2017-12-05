@@ -10,5 +10,5 @@ string2 = "for the shake of ram of in ram with you"
 
 text_list = [string1, string2]
 v.fit(text_list)                         # fitting the document
-bag_of_word = v.transform(text_list)     # transforming to count
+bag_of_word = v.transform(text_list)     # transforming to count object
 print bag_of_word
