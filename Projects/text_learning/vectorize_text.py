@@ -38,35 +38,34 @@ word_data = []
 temp_counter = 0
 
 for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
+
     for path in from_person:
         # only look at first 200 emails when developing
         # once everything is working, remove this line to run over full dataset
-        temp_counter += 1
-        if temp_counter < 250:
-            path = os.path.join('../..', 'enron_dataset/' + path[:-1])
-            # use parseOutText to extract the text from the opened email
-            # use str.replace() to remove any instances of the words
-            # ["sara", "shackleton", "chris", "germani"]
-            # append the text to word_data
-            # append a 0 to from_data if email is from Sara, and 1 if email is from Chris
-            try:
-                email = open(path, "r")
-                text = parseOutText(email)
-                text = str(text)
-                text = text.replace('sara ', '')
-                text = text.replace('shackleton ', '')
-                text = text.replace('chris ', '')
-                text = text.replace('germani ', '')
-                word_data.append(text)
-                if name == 'sara':
-                    from_data.append(0)
-                else:
-                    from_data.append(1)
-                email.close()
-            except IOError:
-                pass
+        path = os.path.join('../..', 'enron_dataset/' + path[:-1])
+        # use parseOutText to extract the text from the opened email
+        # use str.replace() to remove any instances of the words
+        # ["sara", "shackleton", "chris", "germani"]
+        # append the text to word_data
+        # append a 0 to from_data if email is from Sara, and 1 if email is from Chris
+        try:
+            email = open(path, "r")
+            text = parseOutText(email)  # parse every word of email with stemming
+            text = str(text)
+            text = text.replace('sara ', '')
+            text = text.replace('shackleton ', '')
+            text = text.replace('chris ', '')
+            text = text.replace('germani ', '')
+            word_data.append(text)
+            if name == 'sara':
+                from_data.append(0)
+            else:
+                from_data.append(1)
+            email.close()
+        except IOError:
+            pass
 
-# print word_data[147]
+print word_data[147]
 print "emails processed"
 from_sara.close()
 from_chris.close()
