@@ -2,8 +2,6 @@ from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 from nltk.tokenize import word_tokenize
 
-from nltk.
-
 
 def tokenize(data):
 
