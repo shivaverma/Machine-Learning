@@ -2,15 +2,15 @@
 # lasso regression
 
 import numpy as np
+from sklearn.linear_model import Lasso
 
 
 def predict(feature_data1, feature_data2):
 
-    from sklearn.linear_model import Lasso
     c = Lasso()
     c.fit(feature_data1, feature_data2)             # fitting data
     # print c.score(feature_data1, feature_data2)   # r-square score
-    print c.coef_                                   # coefficient of each feature
+    print(c.coef_)                                   # coefficient of each feature
 
 
 if __name__ == '__main__':

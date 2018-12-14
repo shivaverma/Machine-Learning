@@ -14,4 +14,4 @@ lis = a.tolist()
 lis.pop(1)
 
 a = np.reshape(lis, (2, 4))
-print "new array: " + str(a)
+print("new array: " + str(a))

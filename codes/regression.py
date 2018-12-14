@@ -2,14 +2,14 @@
 # linear model regression
 
 import numpy as np
+from sklearn.linear_model import LinearRegression
 
 
 def predict(feature_data1, feature_data2, feature_test):
 
-    from sklearn.linear_model import LinearRegression
     c = LinearRegression()
     c.fit(feature_data1, feature_data2)                # fitting data
-    print c.score(feature_data1, feature_data2)        # r-square score
+    print(c.score(feature_data1, feature_data2))       # r-square score
     return c.predict(feature_test)                     # predicting output
 
 
@@ -19,5 +19,5 @@ if __name__ == '__main__':
     y = np.array([[1], [2], [12], [3], [5]])
     z = np.array([[2], [3]])
     pred = predict(x, y, z)
-    print pred
+    print(pred)
 

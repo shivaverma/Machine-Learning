@@ -13,13 +13,15 @@ text_list = [string1, string2]
 
 v.fit(text_list)                         # fitting the document
 bag_of_word = v.transform(text_list)     # transforming to count object
-print v.vocabulary_.get('zebra')         # printing index of a word
-print bag_of_word
+print(v.vocabulary_.get('midway'))       # printing index of a word
+print(bag_of_word)
 
-print '----------------------------'
+print('----------------------------')
 
-clf = TfidfVectorizer(stop_words="english")
-clf.fit(text_list)
-bag = clf.transform(text_list)
-print clf.vocabulary_.get('the')
-print bag
+text = ["hello world india"]
+
+clf = TfidfVectorizer(stop_words="english")      # convert the words into some type of frequency
+clf.fit(text)
+bag = clf.transform(text)
+print(clf.vocabulary_.get('world'))
+print(bag)

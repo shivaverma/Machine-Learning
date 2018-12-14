@@ -24,8 +24,8 @@ if __name__ == '__main__':
     y = np.array([1, 1, 2, 2])                        # labeling each point
     point = ([[5, 0], [14, 0]])                       # creating array of points for prediction
     pred = predict_label(x, y, point)                 # result vector is stored in pred
-    print pred
+    print(pred)
     test_label = ([2, 1])
     acc = accuracy(pred, test_label)                  # finding the accuracy by comparing to test_label
-    print acc
+    print(acc)
 

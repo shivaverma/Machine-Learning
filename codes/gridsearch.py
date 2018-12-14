@@ -2,12 +2,13 @@
 # svm classifier
 
 import numpy as np
+from sklearn.svm import SVC
+from sklearn.grid_search import GridSearchCV
+from sklearn.metrics import accuracy_score  # to calculate the accuracy
 
 
 def gridsearch(feature_data, label, param):
 
-    from sklearn.grid_search import GridSearchCV
-    from sklearn.svm import SVC        # importing gaussian naive bayes
     c = SVC()
     clf = GridSearchCV(c, param)
     clf.fit(feature_data, label)                        # fitting the data
@@ -16,7 +17,6 @@ def gridsearch(feature_data, label, param):
 
 def accuracy(out, inp):
 
-    from sklearn.metrics import accuracy_score        # to calculate the accuracy
     return accuracy_score(out, inp)
 
 
@@ -27,6 +27,6 @@ if __name__ == '__main__':
     point = ([[5, 0], [14, 0]])
     param = {'kernel': ('linear', 'rbf'), 'C': [1, 10]}
     clf = gridsearch(x, y, param)
-    print clf.best_params_
+    print(clf.best_params_)
 
 
